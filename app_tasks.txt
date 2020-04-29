@@ -1,0 +1,17 @@
+from data.marsians import User
+from data.marsians import Jobs
+from data import db_session
+import datetime
+
+
+db_session.global_init("db/colony.sqlite")
+
+
+session = db_session.create_session()
+
+jobs = Jobs(job="deployment of residential modules 1 and 2",
+            work_size=15, collaborators='2, 3',
+            start_date=datetime.datetime.now(), is_finished=False,
+            team_leader=1)
+session.add(jobs)
+session.commit()
